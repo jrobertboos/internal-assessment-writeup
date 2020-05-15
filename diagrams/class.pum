@@ -1,0 +1,29 @@
+@startuml
+class Cell {
+self : object
+x : int
+y : int
+__init__(self, x : int, y : int) : None
+__eq__(self, other : Cell) : bool
+__add__(self, move : Cell) : Cell
+__lt__(self, other : Cell) : bool
+__gt__(self, other : Cell) : bool
+__sub__(self, other : Cell) : int, int
+__repr__(self) : String
+}
+
+class Snake {
+self : deque
+head : Cell
+body : list
+full : list
+__init__(self) : None
+move(self, direction : int) : None
+grow(self) : None
+}
+
+class Apple {
+self : Cell
+__init__(self) : None
+}
+@enduml

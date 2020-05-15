@@ -1,0 +1,41 @@
+@startuml
+start
+:Generate q table;
+while (Still episodes) is (Yes) 
+while (Snake alive) is (Yes)
+:Generate observation space;
+if (Greater than epsilon) then (Yes)
+  :Q table action;
+else (No)
+  :Random action;
+endif
+:Move snake;
+if (Snake ate apple) then (Yes)
+  :Food reward;
+elseif (Snake died) then (Yes)
+  :Death penalty;
+else (Nothing)
+  :Move penalty;
+endif
+:Genrate q values;
+if (Food reward) then (Yes)
+  :New q value is food reward;
+  :Reset food;
+  :Grow snake;
+else (No)
+  :Q formula determine new q value;
+endif
+endwhile (No)
+:Decay epsilon;
+if (Data) then (Yes)
+  :Dump data;
+else (No)
+endif
+if (Stats) then (Yes)
+  :Print stats;
+else (No)
+endif
+endwhile (No)
+:Generate graph;
+stop
+@enduml

@@ -1,0 +1,301 @@
+#+title: Computer Science Internal Assessment
+
+* Criterion A : Planning
+
+** Defining the Problem
+   The client, Openai, is a software company that focuses on researching the practical uses of Deep Q learning, a type of reinforcement learning. At the start of 2018 they posted seven problems for the public to solve. Out of the seven problems I chose to do the ‘Slithern’’ problem.
+   The ‘Slithern’’ problem asks to “Implement and solve a clone of the classic Snake game (see slither.io for inspiration) as a Gym environment.” In order to solve the problem Openai includes expectations about the environment as well as the agent.
+   The environment must have the following:
+   - A reasonably large field
+   - Snakes’ dies when colliding with another snake, itself, or the wall
+   - The game ends when all snakes die
+   The Agent must have the following:
+   - Must use a reinforcement learning algorithm
+
+** Rationale for Proposed Solution
+	In order to solve the problem posed I will create a program. There will be two main parts of the program, the environment and the agent.  I will also use a number of libraries in the program in order to handle the data as well as manipulate it. Finally, the program will be written in python.
+	The environment will have classes for objects such as snake, apple, and an environment. The snake and apple objects will be used to store information about each object allowing for modularity. The information these classes will be storing will be a user created class to allow for special manipulation. The environment class will create objects that follow the Gym structure. This means that they will have initializer methods, step methods, render methods, and reset methods. Other than the previously stated method there will be methods to manipulate data. 
+	The agent will be structured off of the q learning formula.
+	 I am using python to create the program for a multitude of reasons. Python is exceptional at handling data, great for machine learning applications. This makes it the main language used in machine learning applications like reinforcement learning. As a result of the support in this field there is several libraries that are required to create this program, some of which are essential to running machine learning efficiently. Openai also is based on python and to satisfy the Gym requirement the program must be written in python. Finally, I am using python because I have a lot of experience with it.
+
+** Criteria for Success
+   This program will create both an environment, following the rules of a snake game, and an agent which will be used to solve the environment.
+   - Environment 
+     - A reasonably large field
+     - A configuration file to edit variables about the environment.
+     - Efficient rendering as well as saving videos to file.
+     - Efficent movement of enviorment peices
+     - Must use reinforcement learning algorithm
+     - Provides video representation during training
+     - Efficent implementaion of Q table
+
+* Criterion B : Record of Tasks
+| Task Number | Planned Action                    | Planned Outcome                      | Time Estimated | Target Completion Date | Criterion |
+|-------------+-----------------------------------+--------------------------------------+----------------+------------------------+-----------|
+|           1 | Finding client                    | Found client with problem            | 2 weeks        |                        | A         |
+|           2 | Discuss problem with client       | Identify client's requirements       | 3 days         |                        | A         |
+|           3 | Research about problem            | Identify effective ways to addres    | 4 weeks        |                        | A         |
+|             |                                   | the problem                          |                |                        |           |
+|           4 | Define critera for success        | Idneitify critera's for success      | 1 week         |                        | A         |
+|           5 | Create rapid prototype            | Understand how to implement tools    | 1 week         |                        | B         |
+|             |                                   | needed for success                   |                |                        |           |
+|           6 | Draw UML diagrams and flow        | Diagrams are created and knowledge   | 2 weeks        |                        | B         |
+|             | charts to further understanding   | to implement solution is increased   |                |                        |           |
+|           7 | Code rough snake game             | Rough snake game to act as base for  | 1 week         |                        | C         |
+|             |                                   | snake enviorment                     |                |                        |           |
+|           8 | Adapt snake game to enviorment    | Snake enviorment is created          | 2 weeks        |                        | C         |
+|           9 | Create agent for snake enviorment | Agent for enviorment is created      | 2 weeks        |                        | C         |
+|          10 | Optomize agent and enviorment     | Agent is successful in playing snake | 2 weeks        |                        | C         |
+|          11 | Implment GUI for playing runs     | GUI is created able to render runs   | 1 week         |                        | C         |
+|          12 |                                   |                                      |                |                        |           |
+
+* Criterion B : Design
+
+** Design of the Solution
+
+** Testing Methodology
+
+* Criterion C : Development
+
+** Programming Techniques Used
+- Cell
+  - Cell class 
+  - Overwriting magic methods
+- Snake
+  - Importing libraries
+  - Subclassing deque
+  - Implementing properties
+- Apple
+  - Subclassing Cell
+- Snake Environment
+  - Iteration
+  - Q learning formula
+  - Serializing data
+  - Dumping run data into binary files 
+  - Logging stats
+  - Graphing stats
+- Renderer
+  - Reading binary files
+  - Deserializing data
+  - Creating images from arrays
+  - Rendering video from images
+
+** Examples of Programming Techniques
+
+*** Overwriting magic methods
+cell: 2 - 26
+#+BEGIN_SRC python
+  def __init__(self, x, y):
+      self.x = x
+      self.y = y
+
+  def __eq__(self, other):
+      return self.x == other.x and self.y == other.y
+
+  def __add__(self, move):
+      x = self.x + move[0]
+      y = self.y + move[1]
+      return Cell(x, y)
+
+  def __lt__(self, other):
+      return self.x < other or self.y < other
+
+  def __gt__(self, other):
+      return self.x > other or self.y > other
+
+  def __sub__(self, other):
+      x = self.x - other.x
+      y = self.y - other.y
+      return x,y
+
+  def __repr__(self):
+      return f"({self.x}, {self.y})"
+#+END_SRC
+
+*** Importing libraries
+snake: 1
+#+BEGIN_SRC python
+from collections import deque
+#+END_SRC
+
+apple: 1
+#+BEGIN_SRC python
+from numpy.random import randint
+#+END_SRC
+
+snake_env: 1 - 4
+#+BEGIN_SRC python
+import numpy as np  # numpy is used for randomizing and stats
+from numpy.random import randint  # randint is used for random moves
+from matplotlib import pyplot as plt  # pyplot is used for graphing data
+import pickle  # pickle is used for storing run data
+#+END_SRC
+
+render: 1 - 4
+#+BEGIN_SRC python
+import pickle
+import numpy as np
+from PIL import Image
+import cv2
+#+END_SRC
+
+*** Subclassing deque
+snake: 4
+#+BEGIN_SRC python
+class Snake(deque):
+#+END_SRC
+
+*** Utilizing properties
+snake: 9 - 19
+#+BEGIN_SRC python
+  @property
+  def head(self):
+      return self[0]
+
+  @property
+  def body(self):
+      return [self[i] for i in range(1, len(self))]
+
+  @property
+  def full(self):
+      return [self[i] for i in range(0, len(self))]
+#+END_SRC
+
+*** Subclassing Cell
+apple: 4 
+#+BEGIN_SRC python
+class Apple(Cell):
+#+END_SRC
+
+*** Iteration
+
+*** Q learning formula
+\begin{equation*}
+Q^{new}(s_{t},a_{t})\leftarrow \underbrace {Q(s_{t},a_{t})} _{\text{old value}}+\underbrace {\alpha } _{\text{learning rate}}\cdot \overbrace {{\bigg (}\underbrace {\underbrace {r_{t}} _{\text{reward}}+\underbrace {\gamma } _{\text{discount factor}}\cdot \underbrace {\max _{a}Q(s_{t+1},a)} _{\text{estimate of optimal future value}}} _{\text{new value (temporal difference target)}}-\underbrace {Q(s_{t},a_{t})} _{\text{old value}}{\bigg )}} ^{\text{temporal difference}}}{\displaystyle Q^{new}(s_{t},a_{t})\leftarrow \underbrace {Q(s_{t},a_{t})} _{\text{old value}}+\underbrace {\alpha } _{\text{learning rate}}\cdot \overbrace {{\bigg (}\underbrace {\underbrace {r_{t}} _{\text{reward}}+\underbrace {\gamma } _{\text{discount factor}}\cdot \underbrace {\max _{a}Q(s_{t+1},a)} _{\text{estimate of optimal future value}}} _{\text{new value (temporal difference target)}}-\underbrace {Q(s_{t},a_{t})} _{\text{old value}}{\bigg )}} ^{\text{temporal difference}}
+\end{equation*}
+#+BEGIN_SRC python
+        """
+        Apply Steps for Q Learning
+        All preprocessing was completed beforehand and all the preprocessed
+        data is applied to the q learning formula to get the new  q value of
+        the current action in the current observation space.
+        """
+        # Determine obs of current position
+        new_obs = ((snake.head - snake.body[-1]), (snake.head - food))
+        # Find the max q value of the obs
+        max_future_q = np.max(q_table[new_obs])
+        # Find the q value of the action taken in the previous obs
+        current_q = q_table[obs][action]
+
+        # If state is terminal set state to death penalty
+        if reward == -DIE_PENALTY:
+            new_q = -DIE_PENALTY
+        # If state is not terminal apply q learning formula
+        else:
+            new_q = current_q + LEARNING_RATE * \
+                (reward + (DISCOUNT * max_future_q) - current_q)
+        # Apply determined q value to previous obs action
+        q_table[obs][action] = new_q
+#+END_SRC
+
+#+BEGIN_SRC python
+        # Determine obs of current position
+        new_obs = ((snake.head - snake.body[-1]), (snake.head - food))
+#+END_SRC
+
+#+BEGIN_SRC python
+        # Find the max q value of the obs
+        max_future_q = np.max(q_table[new_obs])
+#+END_SRC 
+
+#+BEGIN_SRC python
+        # Find the q value of the action taken in the previous obs
+        current_q = q_table[obs][action]
+#+END_SRC
+
+#+BEGIN_SRC python
+        # If state is terminal set state to death penalty
+        if reward == -DIE_PENALTY:
+            new_q = -DIE_PENALTY
+#+END_SRC
+
+#+BEGIN_SRC python
+        # If state is not terminal apply q learning formula
+        else:
+            new_q = current_q + LEARNING_RATE * \
+                (reward + (DISCOUNT * max_future_q) - current_q)
+#+END_SRC
+
+#+BEGIN_SRC python
+        # Apply determined q value to previous obs action
+        q_table[obs][action] = new_q
+#+END_SRC
+*** Dumping data
+#+BEGIN_SRC python
+    # Reset saved positions of snake and apple and episode reward
+    snake_data = []
+    apple_data = []
+    episode_reward = 0
+#+END_SRC
+
+#+BEGIN_SRC python
+        # Add reward recieved of every turn
+        episode_reward += reward
+        # Save positions of snake and apple every turn
+        snake_data.append(snake.full)
+        apple_data.append(food)
+#+END_SRC
+
+#+BEGIN_SRC python
+    # Dump saved positions and data to file every # of episodes
+    if not episode % DUMP_EVERY:
+        data = {'snake': snake_data,
+                'apple': apple_data,
+                'reward': episode_reward}
+        with open(f'runs/run{episode}.data', 'wb') as file:
+            pickle.dump(data, file)
+#+END_SRC
+
+*** Logging Stats
+
+*** Graphing stats
+#+BEGIN_SRC python
+    # Save stats of every # of episodes
+    if not episode % STATS_EVERY:
+        average_reward = sum(episode_rewards[-STATS_EVERY:])/STATS_EVERY
+        aggr_ep_rewards['ep'].append(episode)
+        aggr_ep_rewards['avg'].append(average_reward)
+        aggr_ep_rewards['max'].append(max(episode_rewards[-STATS_EVERY:]))
+        aggr_ep_rewards['min'].append(min(episode_rewards[-STATS_EVERY:]))
+#+END_SRC
+
+#+BEGIN_SRC python
+# Make graph using stored stats
+plt.ylabel("Reward")
+plt.xlabel("Episode #")
+plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['avg'], label="Avg Rewards")
+plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['max'], label="Max Rewards")
+plt.plot(aggr_ep_rewards['ep'], aggr_ep_rewards['min'], label="Min Rewards")
+plt.legend(loc=4)
+# Display graph
+plt.show()
+#+END_SRC
+*** Reading binary files
+
+*** Rendering runs
+
+* Criterion D : Functionality
+
+** Video Overview
+
+* Criterion E : Evaluation
+
+** Meeting the Criteria for Success
+
+** Recommendations for Future Improvements
+
+* Appendix I : Bibliography
+
+* Appendix II : Record of Client Discussions
+
+* Appendix III : Source Code
