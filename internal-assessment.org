@@ -1,7 +1,7 @@
 #+title: Computer Science Internal Assessment
 
-* Criterion A : Planning
 
+* Criterion A : Planning
 ** Defining the Problem
    The client, Openai, is a software company that focuses on researching the practical uses of Deep Q learning, a type of reinforcement learning. At the start of 2018 they posted seven problems for the public to solve. Out of the seven problems I chose to do the ‘Slithern’’ problem.
    The ‘Slithern’’ problem asks to “Implement and solve a clone of the classic Snake game (see slither.io for inspiration) as a Gym environment.” In order to solve the problem Openai includes expectations about the environment as well as the agent.
@@ -16,74 +16,145 @@
 	In order to solve the problem posed I will create a program. There will be two main parts of the program, the environment and the agent.  I will also use a number of libraries in the program in order to handle the data as well as manipulate it. Finally, the program will be written in python.
 	The environment will have classes for objects such as snake, apple, and an environment. The snake and apple objects will be used to store information about each object allowing for modularity. The information these classes will be storing will be a user created class to allow for special manipulation. The environment class will create objects that follow the Gym structure. This means that they will have initializer methods, step methods, render methods, and reset methods. Other than the previously stated method there will be methods to manipulate data. 
 	The agent will be structured off of the q learning formula.
-	 I am using python to create the program for a multitude of reasons. Python is exceptional at handling data, great for machine learning applications. This makes it the main language used in machine learning applications like reinforcement learning. As a result of the support in this field there is several libraries that are required to create this program, some of which are essential to running machine learning efficiently. Openai also is based on python and to satisfy the Gym requirement the program must be written in python. Finally, I am using python because I have a lot of experience with it.
+	I am using python to create the program for a multitude of reasons. Python is exceptional at handling data, great for machine learning applications. This makes it the main language used in machine learning applications like reinforcement learning. As a result of the support in this field there is several libraries that are required to create this program, some of which are essential to running machine learning efficiently. Openai also is based on python and to satisfy the Gym requirement the program must be written in python. Finally, I am using python because I have a lot of experience with it.
 
 ** Criteria for Success
    This program will create both an environment, following the rules of a snake game, and an agent which will be used to solve the environment.
-   - Environment 
-     - A reasonably large field
-     - A configuration file to edit variables about the environment.
-     - Efficient rendering as well as saving videos to file.
-     - Efficent movement of enviorment peices
-     - Must use reinforcement learning algorithm
-     - Provides video representation during training
-     - Efficent implementaion of Q table
+
+*** Enviroment
+- Train agent to play snake
+- Read config file for settings
+- Log data during run
+- Dump run data
+*** Render
+- Read config file for settings
+- Render videos from data
+*** Config File
+- All settings are configurable
+*** GUI
+- Display video of run
+- Display graph of performace
+- Switch between video and graph
+- Display all runs
+- Choose run by selecting from menu
 
 * Criterion B : Record of Tasks
-| Task Number | Planned Action                    | Planned Outcome                      | Time Estimated | Target Completion Date | Criterion |
-|-------------+-----------------------------------+--------------------------------------+----------------+------------------------+-----------|
-|           1 | Finding client                    | Found client with problem            | 2 weeks        |                        | A         |
-|           2 | Discuss problem with client       | Identify client's requirements       | 3 days         |                        | A         |
-|           3 | Research about problem            | Identify effective ways to addres    | 4 weeks        |                        | A         |
-|             |                                   | the problem                          |                |                        |           |
-|           4 | Define critera for success        | Idneitify critera's for success      | 1 week         |                        | A         |
-|           5 | Create rapid prototype            | Understand how to implement tools    | 1 week         |                        | B         |
-|             |                                   | needed for success                   |                |                        |           |
-|           6 | Draw UML diagrams and flow        | Diagrams are created and knowledge   | 2 weeks        |                        | B         |
-|             | charts to further understanding   | to implement solution is increased   |                |                        |           |
-|           7 | Code rough snake game             | Rough snake game to act as base for  | 1 week         |                        | C         |
-|             |                                   | snake enviorment                     |                |                        |           |
-|           8 | Adapt snake game to enviorment    | Snake enviorment is created          | 2 weeks        |                        | C         |
-|           9 | Create agent for snake enviorment | Agent for enviorment is created      | 2 weeks        |                        | C         |
-|          10 | Optomize agent and enviorment     | Agent is successful in playing snake | 2 weeks        |                        | C         |
-|          11 | Implment GUI for playing runs     | GUI is created able to render runs   | 1 week         |                        | C         |
-|          12 |                                   |                                      |                |                        |           |
-
+| Task # | Planned Action                             | Planned Outcome                       | Time Estimated | Target Completion Date | Criterion |
+|--------+--------------------------------------------+---------------------------------------+----------------+------------------------+-----------|
+|      1 | Finding client                             | Found client with problem             | 2 weeks        |                        | A         |
+|      2 | Discuss problem with client                | Identify client's requirements        | 3 days         |                        | A         |
+|        |                                            | so that a solution can be designed    |                |                        |           |
+|      3 | Research about problem                     | Identify effective ways to addres     | 4 weeks        |                        | A         |
+|        |                                            | the problem by researching examples   |                |                        |           |
+|      4 | Define critera for success                 | Idneitify critera's for success that  | 1 week         |                        | A         |
+|        |                                            | are based on the clients requirements |                |                        |           |
+|      5 | Create rapid prototype                     | Understand how to implement tools     | 1 week         |                        | B         |
+|        |                                            | needed to make the designed solution  |                |                        |           |
+|      6 | Draw UML diagrams and flow                 | Diagrams are created and knowledge    | 2 weeks        |                        | B         |
+|        | charts to further understanding            | to implement solution is increased    |                |                        |           |
+|      7 | Code rough snake game                      | Rough snake game to act as base for   | 1 week         |                        | C         |
+|        |                                            | snake enviorment as this allows me to |                |                        |           |
+|        |                                            | design the enviormentby modifing the  |                |                        |           |
+|        |                                            | snake game instead of from scratch    |                |                        |           |
+|      8 | Adapt snake game to enviorment             | Snake enviorment is created in order  | 2 weeks        |                        | C         |
+|        |                                            | to start desining the agent for it    |                |                        |           |
+|      9 | Create agent for snake enviorment          | Agent for enviorment is created       | 2 weeks        |                        | C         |
+|     10 | Optomize agent and enviorment              | Agent is successful in playing snake  | 2 weeks        |                        | C         |
+|     11 | Implment GUI for playing runs              | GUI is created able to render runs    | 1 week         |                        | C         |
+|     12 | Fixed error where apple can spawn on snake |                                       |                |                        |           |
+ 
 * Criterion B : Design
-
 ** Design of the Solution
+#+BEGIN_COMMENT
+The structure of this section is based upon the Anime IA, at least for the most part.
+#+END_COMMENT
+*** Internal Structure
+#+BEGIN_COMMENT
+I am using this heading to discuss the objects that I am using that are used in the main scripts but can not be used on their own.
 
+I do not know if I should include with words the specific functions and purposes of each class but I feel like that would be important and there does not appear to be anywhere else where I would address that.
+#+END_COMMENT
+**** Classes
+***** Cell
+All other classes consist of cells. Cells will be used because it will provide an elegant way to move game pieces around as if they were in a 2D space.
+***** Snake
+The snake class extends deque and is a container for all the Cells in the snake. The snake class will handle snake movement and other actions. 
+***** Apple
+The apple class extends the Cell class and will enable apples to be randomly placed anywhere within the game area.
+**** UML Class Diagram
+[[/home/jrobertboos/Documents/Computer Science/internal-assessment-computer-science/diagrams/class.svg]]
+
+*** External Structure
+#+BEGIN_COMMENT
+I am using this heading to discuss the main scripts that are being run.
+
+I have not yet created diagrams for the render and gui.
+#+END_COMMENT
+**** Enviroment
+***** UML Activity Diagram
+[[/home/jrobertboos/Documents/Computer Science/internal-assessment-computer-science/diagrams/proccess.svg]]
+
+**** Render
+***** COMMENT UML Activity Diagram
+**** GUI
+***** COMMENT Layout Diagram
+*** Description of Specific Elements
+#+BEGIN_COMMENT
+In the Anime IA this was a topic that was used and I found it very useful as I can explain some of the more conceptual stuff hear instead of in Criterion C. Even though they are under headers in the final draft they would be formatted similair to the Anime IA in order to save on word count.
+
+I am considering adding a specific element regarding how I render videos from the data but I am not sure. I do not know if I am overlapping to much with Criterion C but if it does not count for word count than there should be no harm in rewriting stuff, right?
+#+END_COMMENT
+
+I used many different non-standard algorithims within my program as shown below.
+**** Q learning Formula: 
+In order to meet the clients specification I must use a reinforcement learning algorithim. Specificaly, I chose to use the Q learning algorithim as it is one of the most common algorithims used in reinforcement learning. Q learning is an algorithim used to learn a policy and tell an agent what to do. My agent would solve the enviroment through the implementation of the equation into the code. The equation can be found below. 
+**** Configuration File: 
+As editing constants in the Q learning formula is very important to solving the enviroment and optomizing the agent, a configuration file would be a very useful addition. A configuration file would allow many different variable sets to be stored without having to overwrite them as well as having all variables for all the methods in one location. The configuration file would be a json as python offers a number of powerful features when reading json.
+**** Deque Data Type: 
+The program makes use of the deque data type to store the segments of the snake so that the segments would be stored in a double ended queue. Double ended queues have two distinct advatages, being able to append and pop from either end of the queue, and appending and popping much more effecitley. This makes the performace of the snakes movements much more concise and optimized.
 ** Testing Methodology
-
-* Criterion C : Development
-
+|        | <40>                                     | <40>                                     | <30>                           |
+| Test # | Details                                  | Methodology                              | Expected Result                |
+|--------+------------------------------------------+------------------------------------------+--------------------------------|
+|      1 | Test if A                                | Run the enviroment                       | No compilation errors          |
+|      2 | gent is trained on enviroment Test wether the configuation file is parsed successfully by the enviroment | Run the enviroment one time and observe global values run again after editing config file | Global values are different    |
+|      3 | Test if while training the agent logs are produced in the console | Run the enviroment and pay attention to the terminal | Logs are being printed in the terminal |
+|      4 | Test wether data is being succesfully dumped by the enviroment | Run the enviroment and with a file manager pay attention to the output location of the enviroment | While the enviroment is running the directory is populated with files |
+|      5 | Test if Render is parsing the configuration file correctly | Run the enviroment to produce runs and then run the render then change the size in the config and repeat | No compilation errors and size of array changes |
+|      6 | Test if Render correctly produces videos | Run the enviroment to produce runs and then run the render | Video appears normal           |
+|      7 | Test wether GUI displays video           | Run GUI and select a run                 | Video appears in GUI and plays back normaly |
+|      9 | Test if GUI switches between video and graph views | Run GUI and switch to graph view         | Main display area switches to graph display |
+|      8 | Test wether GUI displays graph           | Run GUI and select a run then switch to graph view | Graph is displayed with no visible errors |
+|     10 | Test if GUI can select runs              | Run GUI and click on the desired run     | Run is selected and video is displayed |
+* COMMENT CRITERION C : Development
 ** Programming Techniques Used
-- Cell
+*** Cell
   - Cell class 
   - Overwriting magic methods
-- Snake
+*** Snake
   - Importing libraries
   - Subclassing deque
   - Implementing properties
-- Apple
+*** Apple
   - Subclassing Cell
-- Snake Environment
-  - Iteration
+*** Snake Environment
   - Q learning formula
   - Serializing data
   - Dumping run data into binary files 
   - Logging stats
   - Graphing stats
-- Renderer
+*** Renderer
   - Reading binary files
   - Deserializing data
   - Creating images from arrays
   - Rendering video from images
 
 ** Examples of Programming Techniques
+#+BEGIN_COMMENT
+
+#+END_COMMENT
 
 *** Overwriting magic methods
-cell: 2 - 26
 #+BEGIN_SRC python
   def __init__(self, x, y):
       self.x = x
@@ -113,17 +184,14 @@ cell: 2 - 26
 #+END_SRC
 
 *** Importing libraries
-snake: 1
 #+BEGIN_SRC python
 from collections import deque
 #+END_SRC
 
-apple: 1
 #+BEGIN_SRC python
 from numpy.random import randint
 #+END_SRC
 
-snake_env: 1 - 4
 #+BEGIN_SRC python
 import numpy as np  # numpy is used for randomizing and stats
 from numpy.random import randint  # randint is used for random moves
@@ -131,22 +199,34 @@ from matplotlib import pyplot as plt  # pyplot is used for graphing data
 import pickle  # pickle is used for storing run data
 #+END_SRC
 
-render: 1 - 4
 #+BEGIN_SRC python
 import pickle
 import numpy as np
 from PIL import Image
 import cv2
 #+END_SRC
-
+**** Numpy
+I have used the numpy, in order to work with multi dimensional arrays, generate random numbers, as well as calculate statistical information. 
+**** Deque
+I have used the collections library, specifically deque in order to have my snake class act as a container for cell objects.
+**** Pickle
+I have used pickle for dumping and reading run data.
+**** Json
+I have used json to read json files which are used as my configuration files.
+**** Pillow
+I have used pillow in order to generate images from bitmapped arrays.
+**** OpenCV
+I have used opencv to generate videos from images.
+**** Matplotlib
+I have used matplotlib to graph the statistics regarding the models training performace. 
+**** PyQt5
+I have used PyQt5 to construct my gui.
 *** Subclassing deque
-snake: 4
 #+BEGIN_SRC python
 class Snake(deque):
 #+END_SRC
-
+Subclassing Snake as a deque object made the snake a double ended queue which was useful because snake could be appended are popped on either side. Compared to list deque is also much more efficent when popping and appending.
 *** Utilizing properties
-snake: 9 - 19
 #+BEGIN_SRC python
   @property
   def head(self):
@@ -160,19 +240,19 @@ snake: 9 - 19
   def full(self):
       return [self[i] for i in range(0, len(self))]
 #+END_SRC
-
+Because deques can not iterable in order to compare snake segments I used properties which allow me to set variables that I transform into lists as a return statement can be passed.
 *** Subclassing Cell
-apple: 4 
 #+BEGIN_SRC python
 class Apple(Cell):
 #+END_SRC
-
-*** Iteration
-
+Since apple is an individual point it is of type Cell.
 *** Q learning formula
+My program is based upon the Q learning formula.
 \begin{equation*}
 Q^{new}(s_{t},a_{t})\leftarrow \underbrace {Q(s_{t},a_{t})} _{\text{old value}}+\underbrace {\alpha } _{\text{learning rate}}\cdot \overbrace {{\bigg (}\underbrace {\underbrace {r_{t}} _{\text{reward}}+\underbrace {\gamma } _{\text{discount factor}}\cdot \underbrace {\max _{a}Q(s_{t+1},a)} _{\text{estimate of optimal future value}}} _{\text{new value (temporal difference target)}}-\underbrace {Q(s_{t},a_{t})} _{\text{old value}}{\bigg )}} ^{\text{temporal difference}}}{\displaystyle Q^{new}(s_{t},a_{t})\leftarrow \underbrace {Q(s_{t},a_{t})} _{\text{old value}}+\underbrace {\alpha } _{\text{learning rate}}\cdot \overbrace {{\bigg (}\underbrace {\underbrace {r_{t}} _{\text{reward}}+\underbrace {\gamma } _{\text{discount factor}}\cdot \underbrace {\max _{a}Q(s_{t+1},a)} _{\text{estimate of optimal future value}}} _{\text{new value (temporal difference target)}}-\underbrace {Q(s_{t},a_{t})} _{\text{old value}}{\bigg )}} ^{\text{temporal difference}}
 \end{equation*}
+I implemented this formula into my program as shown below.
+
 #+BEGIN_SRC python
         """
         Apply Steps for Q Learning
@@ -180,25 +260,6 @@ Q^{new}(s_{t},a_{t})\leftarrow \underbrace {Q(s_{t},a_{t})} _{\text{old value}}+
         data is applied to the q learning formula to get the new  q value of
         the current action in the current observation space.
         """
-        # Determine obs of current position
-        new_obs = ((snake.head - snake.body[-1]), (snake.head - food))
-        # Find the max q value of the obs
-        max_future_q = np.max(q_table[new_obs])
-        # Find the q value of the action taken in the previous obs
-        current_q = q_table[obs][action]
-
-        # If state is terminal set state to death penalty
-        if reward == -DIE_PENALTY:
-            new_q = -DIE_PENALTY
-        # If state is not terminal apply q learning formula
-        else:
-            new_q = current_q + LEARNING_RATE * \
-                (reward + (DISCOUNT * max_future_q) - current_q)
-        # Apply determined q value to previous obs action
-        q_table[obs][action] = new_q
-#+END_SRC
-
-#+BEGIN_SRC python
         # Determine obs of current position
         new_obs = ((snake.head - snake.body[-1]), (snake.head - food))
 #+END_SRC
@@ -257,6 +318,13 @@ Q^{new}(s_{t},a_{t})\leftarrow \underbrace {Q(s_{t},a_{t})} _{\text{old value}}+
 #+END_SRC
 
 *** Logging Stats
+#+BEGIN_SRC python
+    # Print stats to cosole every # of episodes
+    if not episode % SHOW_EVERY:
+        print(f"#{episode}: Epsilon is {epsilon}")
+        print(f"{SHOW_EVERY} Episode mean: \
+        {np.mean(episode_rewards[-SHOW_EVERY:])}")
+#+END_SRC
 
 *** Graphing stats
 #+BEGIN_SRC python
@@ -281,21 +349,46 @@ plt.legend(loc=4)
 plt.show()
 #+END_SRC
 *** Reading binary files
-
+#+BEGIN_SRC python
+# Open data file and deserialize dictonary object
+with (open(f"runs/run{run_number}.data", "rb")) as openfile:
+    while True:
+        try:
+            objects = pickle.load(openfile)
+        except EOFError:
+            break
+#+END_SRC 
 *** Rendering runs
+#+BEGIN_SRC python
+grids = []
+# Create array frames for each turn in run 
+for turn in range(len(snakes)):
+    grid = np.zeros((SIZE, SIZE, 3), np.uint8)
+    for seg in snakes[turn]:
+        grid[seg.x][seg.y] = WHITE
+    grid[apple[turn].x][apple[turn].y] = RED
+    grids.append(grid)
 
-* Criterion D : Functionality
+# Generate image frames from array frames
+imgs = []
+for frame in grids:
+    img = Image.fromarray(frame, "RGB")
+    img = img.resize((300, 300))
+    imgs.append(img)
+#+END_SRC 
+
+* COMMENT Criterion D : Functionality
 
 ** Video Overview
 
-* Criterion E : Evaluation
+* COMMENT Criterion E : Evaluation
 
 ** Meeting the Criteria for Success
 
 ** Recommendations for Future Improvements
 
-* Appendix I : Bibliography
+* COMMENT Appendix I : Bibliography
 
-* Appendix II : Record of Client Discussions
+* COMMENT Appendix II : Record of Client Discussions
 
-* Appendix III : Source Code
+* COMMENT Appendix III : Source Code
